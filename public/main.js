@@ -1,5 +1,7 @@
 
 
+window.onload = uploadList();
+
 
 document.getElementById("input").addEventListener("click", function(event){
     clearInput(this);
@@ -73,4 +75,14 @@ function createNewItem(nameItem, valInput){
 // "clear" input field
 function clearInput(t){
     t.value = "";
+}
+
+// upload local list to list viewer
+function uploadList(){
+    var n = Number(localStorage.count);
+    console.log(n);
+    for(var c=1; c<=n; c++){
+        var nameItem = "item"+c;
+        createNewItem(nameItem, localStorage.getItem(nameItem));
+    }
 }
