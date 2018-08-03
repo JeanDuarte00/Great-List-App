@@ -65,7 +65,7 @@ function createNewItem(nameItem, valInput){
     spanTag.onclick = function(){
         //this.parentElement.style.display='none';
         this.parentElement.remove();
-        localStorage.removeItem(nameItem);
+        localStorage.removeItem(nameItem);        
     }
 
     
@@ -83,14 +83,16 @@ function clearInput(t){
 
 // upload local list to list viewer
 function uploadList(){
-    if(localStorage.length <= 1){
-        localStorage.removeItem("count");
-    }else{
-        var n = Number(localStorage.count);    
-        for(var c=1; c<=n; c++){
-            var nameItem = "item"+c;
+    var n = 1; 
+
+    for(var nameItem in localStorage){
+        
+        if(n <= localStorage.length){                        
             createNewItem(nameItem, localStorage.getItem(nameItem));
+            n++;
         }
+        
     }
+
     
 }
