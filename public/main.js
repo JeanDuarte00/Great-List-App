@@ -83,10 +83,14 @@ function clearInput(t){
 
 // upload local list to list viewer
 function uploadList(){
-
+    if(localStorage.length <= 1){
+        localStorage.removeItem("count");
+    }else{
     var n = Number(localStorage.count);    
     for(var c=1; c<=n; c++){
         var nameItem = "item"+c;
         createNewItem(nameItem, localStorage.getItem(nameItem));
     }
+    }
+    
 }
