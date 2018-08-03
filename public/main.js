@@ -1,23 +1,26 @@
 
 
 window.onload = uploadList();
+let inputField = document.getElementById("input");
+let addBtn = document.getElementById("btn");
 
 
-document.getElementById("input").addEventListener("click", function(event){
+
+inputField.addEventListener("click", function(event){
     clearInput(this);
 });
 
-document.getElementById("input").addEventListener("keyup", function(event){
+inputField.addEventListener("keyup", function(event){
     event.preventDefault();
     if(event.keyCode == 13){
-        document.getElementById("btn").click();
+        addBtn.click();
         clearInput(this);
     }
     
 });
 
 // insert logic
-document.getElementById("btn").addEventListener("click", function (){
+addBtn.addEventListener("click", function (){
     if( typeof(Storage) == "undefined"){
         console.log("Cant use browser storage");
         
@@ -79,8 +82,8 @@ function clearInput(t){
 
 // upload local list to list viewer
 function uploadList(){
-    var n = Number(localStorage.count);
-    console.log(n);
+    
+    var n = Number(localStorage.count);    
     for(var c=1; c<=n; c++){
         var nameItem = "item"+c;
         createNewItem(nameItem, localStorage.getItem(nameItem));
