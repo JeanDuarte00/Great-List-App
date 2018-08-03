@@ -65,6 +65,7 @@ function createNewItem(nameItem, valInput){
     spanTag.onclick = function(){
         //this.parentElement.style.display='none';
         this.parentElement.remove();
+        localStorage.removeItem(nameItem);
     }
 
     
@@ -82,7 +83,7 @@ function clearInput(t){
 
 // upload local list to list viewer
 function uploadList(){
-    
+
     var n = Number(localStorage.count);    
     for(var c=1; c<=n; c++){
         var nameItem = "item"+c;
