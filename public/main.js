@@ -26,7 +26,7 @@ addBtn.addEventListener("click", function (){
         
     }else{
         console.log("Can use storage");
-        var valInput = document.getElementById("input").value; // get input text
+        var valInput = inputField.value; // get input text
 
         if(valInput != ""){
 
@@ -85,14 +85,20 @@ function clearInput(t){
 function uploadList(){
     var n = 1; 
 
-    for(var nameItem in localStorage){
+    if(localStorage.length == 1 && localStorage.count){
+        localStorage.removeItem("count");
+    }else{
+
+        for(var nameItem in localStorage){
         
-        if(n <= localStorage.length){                        
-            createNewItem(nameItem, localStorage.getItem(nameItem));
-            n++;
+            if(n < localStorage.length && nameItem !== "count"){                        
+                createNewItem(nameItem, localStorage.getItem(nameItem));
+                n++;
+            }
+            
         }
-        
     }
+
 
     
 }
